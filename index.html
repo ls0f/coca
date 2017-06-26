@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="/static/20000.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!-- <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!--  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> -->
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!-- <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<title> 美国当代语料库20000单词筛选</title>
+    <div class="container-fluid">
+    
+		level:<select name="level" id="level" onchange="button_click()" class="form-control">
+    		<option value="3000">3000</option>
+    		<option value="5000">5000</option>
+    		<option value="8000">8000</option>
+    		<option value="10000">10000</option>
+    		<option value="12000">12000</option>
+    		<option value="15000">15000</option>
+    		<option value="20000">20000</option>
+  		</select> <p>
+		in_word:<textarea  id="in_word" rows=10 onchange="button_click()"  class="form-control"></textarea><P>
+		out_word:<textarea id="out_word" rows=10 onchange="button_click()" readonly class="form-control"></textarea> <p>
+    </div>
+    <script type="text/javascript">
+		function button_click(){
+			var level = document.getElementById("level").value;
+			var input = document.getElementById("in_word").value;
+			var output = [];
+			input_list = input.split("\n");
+			for (var k in input){
+				if (WORDS[k] <= level){
+					output.push(k);
+				}
+			}
+			document.getElementById("out_word").value = output.join("\n");
+		}
+    </script>
+</body>
+</html>
