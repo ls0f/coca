@@ -38,9 +38,10 @@
 			var input = document.getElementById("in_word").value;
 			var output = [];
 			input_list = input.split("\n");
-			for (var k in input){
-				if (WORDS[k] <= level){
-					output.push(k);
+			for (var k in input_list){
+				var key = input_list[k].toLowerCase();
+				if (WORDS[key] <= level){
+					output.push(key);
 				}
 			}
 			document.getElementById("out_word").value = output.join("\n");
